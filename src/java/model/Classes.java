@@ -5,22 +5,22 @@ public class Classes {
   private int ClassID;
   private String ClassName;
   private String ProfessorName;
-  private String ClaClassroom;
+  private String Classroom;
   private int Occupied;
   
    public Classes() {
         this.ClassID = 0;
         this.ClassName = "";
         this.ProfessorName = "";
-        this.ClaClassroom = "";
+        this.Classroom = "";
         this.Occupied = 0;
     }
 
-    public Classes(int ClassID, String ClassName, String ProfessorName, String ClaClassroom, int Occupied) {
+    public Classes(int ClassID, String ClassName, String ProfessorName, String Classroom, int Occupied) {
         this.ClassID = ClassID;
         this.ClassName = ClassName;
         this.ProfessorName = ProfessorName;
-        this.ClaClassroom = ClaClassroom;
+        this.Classroom = Classroom;
         this.Occupied = Occupied;
     }
 
@@ -48,12 +48,12 @@ public class Classes {
         this.ProfessorName = ProfessorName;
     }
 
-    public String getClaClassroom() {
-        return ClaClassroom;
+    public String getClassroom() {
+        return Classroom;
     }
 
-    public void setClaClassroom(String ClaClassroom) {
-        this.ClaClassroom = ClaClassroom;
+    public void setClassroom(String ClaClassroom) {
+        this.Classroom = ClaClassroom;
     }
 
     public int getOccupied() {
@@ -66,7 +66,7 @@ public class Classes {
 
     @Override
     public String toString() {
-        return "Classes{" + "ClassID=" + ClassID + ", ClassName=" + ClassName + ", ProfessorName=" + ProfessorName + ", ClaClassroom=" + ClaClassroom + ", Occupied=" + Occupied + '}';
+        return "Classes{" + "ClassID=" + ClassID + ", ClassName=" + ClassName + ", ProfessorName=" + ProfessorName + ", Classroom=" + Classroom + ", Occupied=" + Occupied + '}';
     }
     
   
