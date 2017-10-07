@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Oct 6, 2017, 4:39:41 AM
+    Document   : read
+    Created on : Oct 6, 2017, 3:22:49 PM
     Author     : Hue Bui
 --%>
 
@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>My Classes</title>
+        <title>JSP Page</title>
     </head>
+    
+    <% String table = (String) request.getAttribute("table"); %>
     <body>
-        <h1>My Classes Database</h1>
-        
-        <a href="read">View All Classes</a>
+        <h1>My Classes</h1>
+        <%= table %>
     </body>
 </html>

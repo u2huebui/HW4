@@ -52,8 +52,8 @@ public class Classes {
         return Classroom;
     }
 
-    public void setClassroom(String ClaClassroom) {
-        this.Classroom = ClaClassroom;
+    public void setClassroom(String Classroom) {
+        this.Classroom = Classroom;
     }
 
     public int getOccupied() {
