@@ -15,7 +15,7 @@
     <% String table = (String) request.getAttribute("table"); %>
     <body>
         <h1>My Classes</h1>
-        <table border="1">
+        
   
         <%= table %>
         

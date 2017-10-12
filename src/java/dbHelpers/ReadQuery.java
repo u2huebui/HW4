@@ -21,6 +21,7 @@ public class ReadQuery {
     private ResultSet results;
     
     public ReadQuery(){
+        
     
         Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
@@ -94,6 +95,15 @@ public class ReadQuery {
                 table += "<td>";
                 table += classes.getOccupied();
                 table += "</td>";
+                
+                table += "<td>";
+                table += "<a href=update?ClassID=" + classes.getClassID() + "> Update </a>";
+                table += "</td>";
+                 
+                table += "<td>";
+                table += "<a href=delete?ClassID=" + classes.getClassID() + "> Delete </a>";
+                table += "</td>";
+                
                 
                 table += "</tr>";
             }
