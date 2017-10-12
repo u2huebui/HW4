@@ -9,27 +9,42 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add a New Class</title>   
+        <title>Add a New Class</title>  
+         <link rel="stylesheet" type="text/css" href="style_1.css">
     </head>
     
     <body>
         <h1>Add a New Class</h1>
         
         <form name="addForm" action="addClass" method="get">   
-            
-            <label>Class Name:</label>
-            <input type="text" name="name" value=""/>
+           
+            <table class="add">
+                <tr>
+                    <td class="right">Class Name:</td>
+                    <td> <input type="text" name="name" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="right">Professor Name:</td>
+                    <td><input type="text" name="proname" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="right">Classroom</td>
+                    <td><input type="text" name="rooms" value=""/></td>
+                </tr>
+                
+                <tr>
+                    <td class="right">Occupied :</td>
+                    <td><input type="text" name="occupied" value=""/></td>
+                </tr>
+                
+                
+            </table>
             <br>
-            <label>Professor Name:</labrel>
-            <input type="text" name="proname" value=""/>
-            <br>
-            <label>Classroom</label>
-            <input type="text" name="rooms" value=""/>
-            <br>
-            <label>Occupied :</label>
-            <input type="text" name="occupied" value=""/>
-            <br>
-            <input type="submit" name="submit" value="submit"/>
+            <input type="reset" name="reset" value="Clear"/>
+           
+            <input type="submit" name="submit" value="Submit"/>
         </form>
 
     </body>

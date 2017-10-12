@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dbHelpers.DeleteQuery;
+import dbHelpers.ReadRecord;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,13 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Classes;
 
 /**
  *
  * @author Hue Bui
  */
-@WebServlet(name = "DeleteServlet", urlPatterns = {"/delete"})
-public class DeleteServlet extends HttpServlet {
+@WebServlet(name = "UpdatFormeServlet", urlPatterns = {"/update"})
+public class UpdatFormeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +40,10 @@ public class DeleteServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteServlet</title>");            
+            out.println("<title>Servlet UpdatFormeServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdatFormeServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,9 +61,9 @@ public class DeleteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+         
             // Pass execution on to doPost
-                doPost(request, response);
+            doPost(request, response);
     }
 
     /**
@@ -80,18 +81,21 @@ public class DeleteServlet extends HttpServlet {
             // get the ClassID
             int ClassID = Integer.parseInt(request.getParameter("ClassID"));
             
-            // create a deleteQuery object
-            DeleteQuery dq = new DeleteQuery();
+            // create a ReadRecord class
+            ReadRecord aa = new ReadRecord(ClassID);
+            //use ReadRecord to get the class data
+            aa.doRead();
+            Classes classes = aa.getClasses();
+            // pass class and control to updateForm.jsp
             
-            // use deleteQuery to delete the object
-            dq.doDelete(ClassID);
+            request.setAttribute("classes", classes);
             
-            // pass execution on to the ReadServlet
-            String url = "/read";
+            String url = "/updateForm.jsp";
+            
             RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward (request, response);
-            
+            dispatcher.forward(request, response);
     }
+            
 
     /**
      * Returns a short description of the servlet.
