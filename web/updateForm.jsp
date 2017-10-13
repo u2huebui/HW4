@@ -22,28 +22,28 @@
             <table class="update">
                 
                 <tr>
-                    <td class="right">Class ID:</td>
+                    <td>Class ID:</td>
                     <td> <input type="text" name="name" value="<%=classes.getClassID() %>"/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Class Name:</td>
+                    <td>Class Name:</td>
                     <td> <input type="text" name="name" value="<%=classes.getClassName() %>"/></td>
                 </tr>
                 </tr>
                 
                 <tr>
-                    <td class="right">Professor Name:</td>
+                    <td>Professor Name:</td>
                     <td><input type="text" name="proname" value="<%=classes.getProfessorName() %>"/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Classroom</td>
+                    <td>Classroom</td>
                     <td><input type="text" name="rooms" value="<%=classes.getClassroom() %>"/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Occupied :</td>
+                    <td>Occupied :</td>
                     <td><input type="text" name="occupied" value="<%=classes.getOccupied() %>"/></td>
                 </tr>  
             </table>

@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add a New Class</title>  
-         <link rel="stylesheet" type="text/css" href="style_1.css">
+        <link rel="stylesheet" type="text/css" href="style_1.css">
     </head>
     
     <body>
@@ -19,23 +19,24 @@
         <form name="addForm" action="addClass" method="get">   
            
             <table class="add">
+               
                 <tr>
-                    <td class="right">Class Name:</td>
+                    <td>Class Name:</td>
                     <td> <input type="text" name="name" value=""/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Professor Name:</td>
+                    <td>Professor Name:</td>
                     <td><input type="text" name="proname" value=""/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Classroom</td>
+                    <td>Classroom</td>
                     <td><input type="text" name="rooms" value=""/></td>
                 </tr>
                 
                 <tr>
-                    <td class="right">Occupied :</td>
+                    <td>Occupied :</td>
                     <td><input type="text" name="occupied" value=""/></td>
                 </tr>
                 

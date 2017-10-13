@@ -62,8 +62,30 @@ public class ReadQuery {
     public String getHTMLtable(){
         String table = "";
         
-        table += "<table border=1>";
-        
+        table += "<table>";
+        table += "<tr>";
+                table += "<th>";
+                table += "ID";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Class";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Professor";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Classroom";
+                table += "</th>";
+                
+                table += "<th>";
+                table += "Students";
+                table += "</th>";
+                table += "</tr>";
+                
+             
         try {
             while (this.results.next()){
                 
@@ -73,6 +95,11 @@ public class ReadQuery {
                 classes.setProfessorName(this.results.getString("ProfessorName"));
                 classes.setClassroom(this.results.getString("Classroom"));
                 classes.setOccupied(this.results.getInt("Occupied"));
+                
+              
+                
+                
+                
                 
                 table += "<tr>";
                 table += "<td>";

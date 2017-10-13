@@ -1,13 +1,50 @@
 body {
-background-color: LightSalmon;
+background-color: #D2B48C;
 color: black;
 font-family: verdana;
 front-size: 20px; 
 }
-table {border-collapse: collapse}
-table, th, td { border: 1px solid black;}
+table {border-collapse: collapse;
+       border: 6px solid #FFFFFF;
+      
+       border-spacing: 5px;
+       width : 80%
+         
+}
+ th, td { 
+     padding: 5px ;
+    border: 1px solid #FFFFFF;
+     vertical-align: middle;
+      border-bottom: 1px solid #CCCCCC;
+}
 
-.right {text-align: right;}
+th {
+    text-align: middle;
+    height: 100px
+    padding: 8px;
+}
+td {
+    text-align: left;
+    padding: 8px;
+    
+}
+
+td{
+    background-color: #F08080;
+    color: #FFFFFF;
+}
+
+th{
+    background-color: #FFFF99;
+    color: #696969;
+}
+tr :hover{background-color: #CCCCCC;}
+tr:nth-child(even) {background-color: #F2F2F2}
+update, delete{
+    color: #696969;
+    
+}
+.add table { width : 60%}
 .add td {border:none; height:25px; padding: 10px; font-weight: bold;}
 .update td {border:none; height:25px; padding: 10px; font-weight: bold;}
 
