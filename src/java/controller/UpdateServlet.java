@@ -1,7 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controller;
 
-import dbHelpers.ReadQuery;
+import dbHelpers.AddQuery;
+import dbHelpers.UpdateQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -10,13 +15,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Classes;
 
 /**
  *
  * @author Hue Bui
  */
-@WebServlet(name = "Read", urlPatterns = {"/read"})
-public class Read extends HttpServlet {
+@WebServlet(name = "UpdateServlet", urlPatterns = {"/updateClass"})
+public class UpdateServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +41,10 @@ public class Read extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Read Hue Bui</title>");            
+            out.println("<title>Servlet UpdateServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Read at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -56,9 +62,8 @@ public class Read extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+       
         // Pass execution on to doPost
-        System.out.println("do get ....");
         doPost(request, response);
     }
 
@@ -73,22 +78,27 @@ public class Read extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Create a ReadQuery helper object
-        System.out.println("do post ....");
-        ReadQuery rq = new ReadQuery ();
-        
-        // Get the HTML table from the ReadQuery object
-        rq.doRead();
-        String table = rq.getHTMLtable();
-        
-        // Pass execution control to read.jsp along with the table.
-        request.setAttribute("table", table);
-        String url = "/read.jsp";
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-        
-       
+     // get the form data and set up a Class object
+         int id = Integer.parseInt(request.getParameter("ID"));
+         String name = request.getParameter("name");
+         String proname = request.getParameter("professor");
+         String rooms = request.getParameter("classrooms");
+         int students = Integer.parseInt(request.getParameter("occupied"));
+         Classes classes = new classes();
+         classes.setClassID(id);
+         classes.setClassName(name);
+         classes.setProfessorName(proname);
+         classes.setClassrooms(rooms);
+         classes.setOccupied(students);
+     // create an UpdateQuery object and use it to update the class
+         UpdateQuery aq = new UpdateQuery();// create object aq of class addquery (can create many objects from class addquery)
+        //pass the friend to addQuery to add to the database
+         aq.doUpdate(classes); // tao ham doAdd voi tham so classes
+         //pass execution control to the Read.java (readselvet)
+         String url = "/read";
+          RequestDispatcher dispatcher = request.getRequestDispatcher(url); // chi nhan string database
+        dispatcher.forward (request, response);
+    
     }
 
     /**

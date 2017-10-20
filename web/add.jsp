@@ -18,31 +18,37 @@
         
         <form name="addForm" action="addClass" method="get">   
            
-            <table class="add">
+           
                
                 <tr>
-                    <td>Class Name:</td>
+                    <td>Class Name:    </td>
+                <br>
                     <td> <input type="text" name="name" value=""/></td>
                 </tr>
-                
+                <br><br>
+                    
+          
                 <tr>
                     <td>Professor Name:</td>
+                <br>
                     <td><input type="text" name="proname" value=""/></td>
                 </tr>
-                
+                <br><br>
                 <tr>
-                    <td>Classroom</td>
+                    <td>Classroom      </td>
+                <br>
                     <td><input type="text" name="rooms" value=""/></td>
                 </tr>
-                
+                <br><br>
                 <tr>
-                    <td>Occupied :</td>
+                    <td>Occupied :     </td>
+                <br>
                     <td><input type="text" name="occupied" value=""/></td>
                 </tr>
                 
                 
-            </table>
-            <br>
+           
+                <br><br>
             <input type="reset" name="reset" value="Clear"/>
            
             <input type="submit" name="submit" value="Submit"/>

@@ -7,7 +7,6 @@ package dbHelpers;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,28 +16,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Classes;
 
-/**
- *
- * @author Hue Bui
- */
-public class AddQuery {
+public class UpdateQuery {
+    
     private Connection conn;
     
- 
-    
-    public AddQuery(){
-          
-        Properties props = new Properties();
+    public UpdateQuery(){
+     Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         String driver = props.getProperty("driver.name");
@@ -48,18 +41,20 @@ public class AddQuery {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, passwd);
                     } catch (SQLException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
     
-    }
-       public void doAdd (Classes classes){
+}
+    
+      public void doUpdateQuery (Classes classes){
+        
         try {
-            String query = "INSERT INTO classes (className, professorName, classroom, occupied) VALUES (?,?,?,?)";
+            String query = "UPDATE classes SET className=?, professorName=?, classroom=?, occupied=?";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, classes.getClassName());
             ps.setString(2, classes.getProfessorName());
@@ -67,10 +62,13 @@ public class AddQuery {
             ps.setInt(4, classes.getOccupied());
             
             ps.executeUpdate();
-            
         } catch (SQLException ex) {
-            Logger.getLogger(AddQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public void doUpdate(Classes classes) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -1,6 +1,7 @@
 
 package model;
 
+//java bean
 public class Classes {
   private int ClassID;
   private String ClassName;
@@ -45,6 +46,7 @@ public class Classes {
     }
 
     public void setProfessorName(String ProfessorName) {
+        
         this.ProfessorName = ProfessorName;
     }
 
@@ -67,6 +69,10 @@ public class Classes {
     @Override
     public String toString() {
         return "Classes{" + "ClassID=" + ClassID + ", ClassName=" + ClassName + ", ProfessorName=" + ProfessorName + ", Classroom=" + Classroom + ", Occupied=" + Occupied + '}';
+    }
+
+    public void setClassrooms(String rooms) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
   

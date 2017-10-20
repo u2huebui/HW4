@@ -69,7 +69,7 @@ public class ReadRecord {
             // fill in the preparedstatement
             ps.setInt(1, ClassID);
             // execute the query
-            this.results = (Resultset) ps.executeQuery();
+            this.results = (Resultset) ps.executeQuery(); //double check the (Resultset)
             this.results.next ();
             
             classes.setClassID(this.results.getInt("ClassID"));

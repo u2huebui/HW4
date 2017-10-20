@@ -52,11 +52,11 @@ public class ReadQuery {
     }
     public void doRead(){
         try {
-            String query = "Select * from classes";
-            PreparedStatement ps = conn.prepareStatement(query);
-            this.results = ps.executeQuery();
+            String query = "Select * from classes";//cau query cua em
+            PreparedStatement ps = conn.prepareStatement(query);//connect to database
+            this.results = ps.executeQuery();// get results
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex); // login to webserver or netbeans log
         }
     }
     public String getHTMLtable(){

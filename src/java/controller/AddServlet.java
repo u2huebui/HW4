@@ -92,13 +92,14 @@ public class AddServlet extends HttpServlet {
         classes.setOccupied(students);
         
         // set up an addQuery object
-        AddQuery aq = new AddQuery();
+        AddQuery aq = new AddQuery();// create object aq of class addquery (can create many objects from class addquery)
         //pass the friend to addQuery to add to the database
-       aq.doAdd(classes);
+        aq.doAdd(classes); // tao ham doAdd voi tham so classes
+        //done inserting into db
         //pass execution control to the Read.java (readselvet)
         String url = "/read";
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url); // chi nhan string database
         dispatcher.forward (request, response);
     
     }
