@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
-import dbHelpers.ReadRecord;
+import dbHelpers.SearchQuery;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,14 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Classes;
 
 /**
  *
  * @author Hue Bui
  */
-@WebServlet(name = "UpdatFormeServlet", urlPatterns = {"/update"})
-public class UpdatFormeServlet extends HttpServlet {
+@WebServlet(name = "SearchServlet", urlPatterns = {"/search"})
+public class SearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +35,10 @@ public class UpdatFormeServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdatFormeServlet</title>");            
+            out.println("<title>Servlet SearchServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdatFormeServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SearchServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,9 +56,8 @@ public class UpdatFormeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-            // Pass execution on to doPost
-            doPost(request, response);
+      // Pass execution on to doPost
+        doPost(request, response);
     }
 
     /**
@@ -77,25 +71,21 @@ public class UpdatFormeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            
-            // get the ClassID
-            int classID = Integer.parseInt(request.getParameter("ClassID"));
-            
-            // create a ReadRecord class
-            ReadRecord aa = new ReadRecord(classID);
-            //use ReadRecord to get the class data
-            aa.doRead();
-            Classes classes = aa.getClasses();
-            // pass class and control to updateForm.jsp
-            
-            request.setAttribute("classes", classes);
-            
-            String url = "/updateForm.jsp";
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request, response);
+       //get the text to search
+       String ClassName = request.getParameter("searchVal");
+       //create a SearchQuery helper object
+       SearchQuery sq = new SearchQuery();
+       //get the HTML table from the SearchQuery object
+       sq.doSearch(ClassName);
+       String table = sq.getHTMLtable();
+       
+       //pass execution control to read.jsp along with the table
+       request.setAttribute("table", table);
+        String url = "/read.jsp";
+        
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
-            
 
     /**
      * Returns a short description of the servlet.

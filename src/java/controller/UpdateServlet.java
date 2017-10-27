@@ -84,11 +84,11 @@ public class UpdateServlet extends HttpServlet {
          String proname = request.getParameter("professor");
          String rooms = request.getParameter("classrooms");
          int students = Integer.parseInt(request.getParameter("occupied"));
-         Classes classes = new classes();
+         Classes classes = new Classes();
          classes.setClassID(id);
          classes.setClassName(name);
          classes.setProfessorName(proname);
-         classes.setClassrooms(rooms);
+         classes.setClassroom(rooms);
          classes.setOccupied(students);
      // create an UpdateQuery object and use it to update the class
          UpdateQuery aq = new UpdateQuery();// create object aq of class addquery (can create many objects from class addquery)

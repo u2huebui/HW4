@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -19,12 +20,12 @@ import model.Classes;
 public class ReadRecord {
     
     private Connection conn;
-    private Resultset results;
+    private ResultSet results;
     
     private Classes classes = new Classes();
-    private int ClassID;
+    private int classID;
 
-    public ReadRecord (int ClassID){
+    public ReadRecord (int classID){
 
  Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
@@ -44,7 +45,7 @@ public class ReadRecord {
         String username = props.getProperty("user.name");
         String passwd = props.getProperty("user.password");
         
-        this.ClassID = ClassID;
+        this.classID = classID;
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
@@ -67,9 +68,9 @@ public class ReadRecord {
             PreparedStatement ps = conn.prepareStatement(query);
             
             // fill in the preparedstatement
-            ps.setInt(1, ClassID);
+            ps.setInt(1, classID);
             // execute the query
-            this.results = (Resultset) ps.executeQuery(); //double check the (Resultset)
+            this.results = ps.executeQuery(); //double check the (Resultset)
             this.results.next ();
             
             classes.setClassID(this.results.getInt("ClassID"));

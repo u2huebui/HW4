@@ -9,12 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>My Classes Hue Bui</title>
-        <link rel="stylesheet" type="text/css" href="style_1.css">
+         <link rel="stylesheet" type="text/css" href="style_1.css">
+        <title>My Classes Hue Bui</title> 
     </head>
     <body>
         <h1>My Classes Database</h1>
         
         <a href="read">View All Classes</a>
+        <br><br>
+         <a href="search.jsp">Search Classes</a>
     </body>
 </html>

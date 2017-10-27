@@ -1,6 +1,5 @@
+
 package dbHelpers;
-
-
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -15,24 +14,22 @@ import java.util.logging.Logger;
 import model.Classes;
 
 
-public class ReadQuery {
-    
+public class SearchQuery {
     private Connection conn;
     private ResultSet results;
-    
-    public ReadQuery(){
-        
-        Properties props = new Properties();
+public SearchQuery() {
+      Properties props = new Properties();
         InputStream instr = getClass().getResourceAsStream("dbConn.properties");
         try {
             props.load(instr);
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             instr.close();
         } catch (IOException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
+              
         }
         
         String driver = props.getProperty("driver.name");
@@ -42,24 +39,28 @@ public class ReadQuery {
         try {
             Class.forName(driver);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             conn = DriverManager.getConnection(url, username, passwd);
                     } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    public void doRead(){
+    
+}
+
+ public void doSearch(String ClassName){
         try {
-            String query = "Select * from classes order by ClassID ASC ";//cau query cua em
+            String query = "SELECT * from classes WHERE UPPER(ClassName) like ? ORDER BY ClassID ASC";
             PreparedStatement ps = conn.prepareStatement(query);//connect to database
+            ps.setString(1, "%" + ClassName.toUpperCase() + "%" );
             this.results = ps.executeQuery();// get results
         } catch (SQLException ex) {
-            Logger.getLogger(ReadQuery.class.getName()).log(Level.SEVERE, null, ex); // login to webserver or netbeans log
+            Logger.getLogger(SearchQuery.class.getName()).log(Level.SEVERE, null, ex); // login to webserver or netbeans log
         }
     }
-    public String getHTMLtable(){
+ 
+ public String getHTMLtable(){
         String table = "";
         
         table += "<table>";
@@ -97,10 +98,6 @@ public class ReadQuery {
                 classes.setOccupied(this.results.getInt("Occupied"));
                 
               
-                
-                
-                
-                
                 table += "<tr>";
                 table += "<td>";
                 table += classes.getClassID();
@@ -143,4 +140,5 @@ public class ReadQuery {
        
                 return table;
     }
+    
 }

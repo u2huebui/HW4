@@ -79,7 +79,7 @@ public class AddServlet extends HttpServlet {
             throws ServletException, IOException {
          
         // get a data
-        String name = request.getParameter("name");
+         String name = request.getParameter("name");
          String proname = request.getParameter("proname");
          String rooms = request.getParameter("rooms");
          int students = Integer.parseInt(request.getParameter("occupied"));

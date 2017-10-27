@@ -22,6 +22,8 @@
         
         <br><br>
         
-        <a href ="add">Add A New Friend</a>
+        <a href ="add">Add A New Class</a> 
+        <br><br>
+        <a href="search.jsp">Search Classes</a>
     </body>
 </html>

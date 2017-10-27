@@ -51,15 +51,16 @@ public class UpdateQuery {
     
 }
     
-      public void doUpdateQuery (Classes classes){
+      public void doUpdate (Classes classes){
         
         try {
-            String query = "UPDATE classes SET className=?, professorName=?, classroom=?, occupied=?";
+            String query = "UPDATE classes SET className=?, professorName=?, classroom=?, occupied=?where ClassID =? ";
             PreparedStatement ps = conn.prepareStatement(query);
             ps.setString(1, classes.getClassName());
             ps.setString(2, classes.getProfessorName());
             ps.setString(3, classes.getClassroom());
             ps.setInt(4, classes.getOccupied());
+              ps.setInt(5, classes.getClassID());
             
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -67,8 +68,6 @@ public class UpdateQuery {
         }
     }
 
-    public void doUpdate(Classes classes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

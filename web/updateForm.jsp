@@ -17,7 +17,7 @@
      <body>
         <h1>Update A Class</h1>
         
-        <form name="updateForm" action="updateClass" method="get">   
+        <form name="updateForm" action="updateClass" method="post">   
             
             <table class="update">
                 
