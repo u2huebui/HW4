@@ -13,6 +13,13 @@
         <title>Search Class</title>
     </head>
     <body>
+        <div class="wrap">
+            <!--header-->
+            <%@ include file="includes/header.jsp" %>
+            
+            <!--menu-->
+            <%@ include file="includes/menu.jsp" %>
+        <div class="main"> <!-- main div -->
         <h1>Search Class</h1>
         <form name="searchForm" action="search" method="post">   
  
@@ -20,5 +27,11 @@
                     <br>
                     <br>
                     <input type="submit" name="submit" value="Search"/>
-    </body>
+        </div> <!-- close the main div -->
+         
+         <!--footer-->
+          <%@ include file="includes/footer.jsp" %>
+
+         </div> <!-- close wrap div -->
+        </body>
 </html>

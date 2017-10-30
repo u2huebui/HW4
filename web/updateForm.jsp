@@ -15,6 +15,13 @@
         <link rel="stylesheet" type="text/css" href="style_1.css">
     </head>
      <body>
+         <div class="wrap">
+            <!--header-->
+            <%@ include file="includes/header.jsp" %>
+            
+            <!--menu-->
+            <%@ include file="includes/menu.jsp" %>
+        <div class="main"> <!-- main div -->
         <h1>Update A Class</h1>
         
         <form name="updateForm" action="updateClass" method="post">   
@@ -53,6 +60,11 @@
             <input type="submit" name="submit" value="Update"/>
         </form>
 
+    </div> <!-- close the main div -->
+         
+         <!--footer-->
+          <%@ include file="includes/footer.jsp" %>
 
+         </div> <!-- close wrap div -->
     </body>
 </html>

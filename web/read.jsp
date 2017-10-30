@@ -15,6 +15,13 @@
     
     <% String table = (String) request.getAttribute("table"); %>
     <body>
+        <div class="wrap">
+            <!--header-->
+            <%@ include file="includes/header.jsp" %>
+            
+            <!--menu-->
+            <%@ include file="includes/menu.jsp" %>
+        <div class="main"> <!-- main div -->
         <h1>My Classes Databases</h1>
         
   
@@ -25,5 +32,11 @@
         <a href ="add">Add A New Class</a> 
         <br><br>
         <a href="search.jsp">Search Classes</a>
-    </body>
+        </div> <!-- close the main div -->
+         
+         <!--footer-->
+          <%@ include file="includes/footer.jsp" %>
+
+         </div> <!-- close wrap div -->
+        </body>
 </html>

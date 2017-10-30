@@ -14,6 +14,13 @@
     </head>
     
     <body>
+        <div class="wrap">
+            <!--header-->
+            <%@ include file="includes/header.jsp" %>
+            
+            <!--menu-->
+            <%@ include file="includes/menu.jsp" %>
+        <div class="main"> <!-- main div -->
         <h1>Add a New Class</h1>
         
         <form name="addForm" action="addClass" method="get">   
@@ -53,6 +60,11 @@
            
             <input type="submit" name="submit" value="Submit"/>
         </form>
+        </div> <!-- close the main div -->
+         
+         <!--footer-->
+          <%@ include file="includes/footer.jsp" %>
 
+         </div> <!-- close wrap div -->
     </body>
 </html>
